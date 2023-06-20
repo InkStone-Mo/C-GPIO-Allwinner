@@ -14,7 +14,9 @@
 #include<fcntl.h> 
 
 /* configure only in this / 以下适配 */
-#if defined(ALLWINNER_H6)
+
+// 支持 H6 \ H616
+#if defined(ALLWINNER_H6)||defined(ALLWINNER_H616) 
 	#define GPIO_BASE_ADDRESS	0x0300B000
 #else //支持 H3 \ H6 \ F1C100S \ F1C200S \F1C600S \ V3S
 	#define GPIO_BASE_ADDRESS	0x01C20800
@@ -49,6 +51,15 @@
 		PG = 6,
 		PH = 7,
 	}Port;
+#elif defined(ALLWINNER_H616)
+        typedef enum
+        {
+                PC = 2,
+                PF = 5,
+                PG = 6,
+                PH = 7,
+		PI = 9,
+        }Port;
 #else // ALLWINNER H3
 	typedef enum
 	{
